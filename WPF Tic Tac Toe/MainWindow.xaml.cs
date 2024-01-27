@@ -31,7 +31,7 @@ namespace WPF_Tic_Tac_Toe
                 var code = button.Tag;
                 button.Content = playerTurn == 1 ? "X" : "O";
                 int position = Int32.Parse(code.ToString());
-                MarkPosition(position);
+                MarkPosition(button, position);
                 gameEnd = CheckWinner();
                 if (gameEnd)
                 {
@@ -47,8 +47,19 @@ namespace WPF_Tic_Tac_Toe
             }
 
         }
-        private void MarkPosition(int position)
+        private void MarkPosition(Button button, int position)
         {
+
+            if (playerTurn == 1)
+            {
+                button.Background = Brushes.LightGreen;
+                button.Foreground = Brushes.Blue;
+            }
+            else
+            {
+                button.Background = Brushes.LightGreen;
+                button.Foreground = Brushes.Red;
+            }
             int row = (position - 1) / 3;
             int col = (position - 1) % 3;
 
