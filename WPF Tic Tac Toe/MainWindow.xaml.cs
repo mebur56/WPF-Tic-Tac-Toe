@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using MaterialDesignColors;
+using System.Drawing;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -50,14 +52,17 @@ namespace WPF_Tic_Tac_Toe
         private void MarkPosition(Button button, int position)
         {
 
+                SolidColorBrush brush = new SolidColorBrush(SwatchHelper.Lookup[MaterialDesignColor.LightGreen
+                    ]);
             if (playerTurn == 1)
             {
-                button.Background = Brushes.LightGreen;
+                button.Background = brush;
                 button.Foreground = Brushes.Blue;
             }
             else
             {
-                button.Background = Brushes.LightGreen;
+
+                button.Background = brush;
                 button.Foreground = Brushes.Red;
             }
             int row = (position - 1) / 3;
@@ -107,6 +112,7 @@ namespace WPF_Tic_Tac_Toe
                     }
                 }
             }
+            gameEnd = true;
 
             return true;
         }
@@ -127,6 +133,8 @@ namespace WPF_Tic_Tac_Toe
 
             foreach (Button button in buttons)
             {
+                SolidColorBrush brush = new SolidColorBrush(SwatchHelper.Lookup[MaterialDesignColor.DeepPurple]);
+                button.Background = brush;
                 button.Content = "";
             }
         }
